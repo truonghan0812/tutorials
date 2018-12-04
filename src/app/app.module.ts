@@ -6,10 +6,14 @@ import { AppComponent } from './app.component';
 
 //Third party
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
+import { GetMemberShipLevelPipe } from './custom-pipe/get-member-ship-level.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CustomPipeComponent,
+    GetMemberShipLevelPipe
   ],
   imports: [
     BrowserModule,
