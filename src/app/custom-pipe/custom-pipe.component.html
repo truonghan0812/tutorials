@@ -3,6 +3,7 @@
         <button class='btn btn-outline-primary' id='dropdownBasic1' ngbDropdownToggle>Items per page: {{itemPerPage}}</button>
         <div ngbDropdownMenu aria-labelledby='dropdownBasic1'>
           <button class='dropdown-item' (click)='changeSortOrder(5)'>5</button>
+          <button class='dropdown-item' (click)='changeSortOrder(10)'>10</button>
           <button class='dropdown-item' (click)='changeSortOrder(20)'>20</button>
           <button class='dropdown-item' (click)='changeSortOrder(50)'>50</button>
         </div>
@@ -13,6 +14,7 @@
         <th scope='col'>#</th>
         <th scope='col'>First</th>
         <th scope='col'>Last</th>
+        <th scope='col'>Point</th>
         <th scope='col'>Membership</th>
       </tr>
     </thead>
@@ -21,7 +23,9 @@
         <th scope='row'>{{i + 1}}</th>
         <td>{{member.firstName}}</td>
         <td>{{member.lastName}}</td>
-        <td>{{member.point|getMemberShipLevel}}</td>
+        <td>{{member.point}}</td>
+        <!-- <td>{{getMemberShipLevel(member.point)}}</td> -->
+       <td>{{member.point | getMemberShipLevel}}</td>
       </tr>
     </tbody>
   </table>

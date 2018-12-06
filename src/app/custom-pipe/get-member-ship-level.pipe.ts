@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'getMemberShipLevel'
+  name: 'getMemberShipLevel',
+  pure: true
 })
 export class GetMemberShipLevelPipe implements PipeTransform {
 
