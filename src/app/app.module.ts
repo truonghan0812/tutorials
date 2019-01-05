@@ -4,16 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-//Third party
+//Third party import
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
-import { GetMemberShipLevelPipe } from './custom-pipe/get-member-ship-level.pipe';
+import { MembershipComponent } from './membership/membership.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomPipeComponent,
-    GetMemberShipLevelPipe
+    MembershipComponent
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-custom-pipe',
-  templateUrl: './custom-pipe.component.html',
-  styleUrls: ['./custom-pipe.component.scss']
+  selector: 'app-membership',
+  templateUrl: './membership.component.html',
+  styleUrls: ['./membership.component.scss']
 })
-export class CustomPipeComponent{
+export class MembershipComponent{
   members = [];
   itemPerPage = 10;
 
@@ -18,7 +18,7 @@ export class CustomPipeComponent{
   }
   getMemberShipLevel(point: number): String{
     console.info("---getMemberShipLevel---");
-    
+    this.heavyCalculation(1);
     if(point > 900){
       return 'Platinum';
     }else if(point > 700){
@@ -29,7 +29,15 @@ export class CustomPipeComponent{
     }
     return 'Basic';
   }
+  heavyCalculation(ms){
+    let start = new Date().getTime();
+    let end = start;
+    while(end < start + ms) {
+      end = new Date().getTime();
+   }
+ }
 }
+
 
 const sample_memmbers = [
   {

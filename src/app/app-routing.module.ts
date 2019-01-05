@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
+import { MembershipComponent } from './membership/membership.component';
 
 const routes: Routes = [
-  {path:'custom-pipe', component: CustomPipeComponent}
+  {path:'', component: MembershipComponent}
 ];
 
 @NgModule({
