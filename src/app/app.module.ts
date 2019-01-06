@@ -3,22 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-//Third party import
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { MembershipComponent } from './membership/membership.component';
+import { MembershipModule } from './membership/membership.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MembershipComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    //Third party
-    NgbModule
+    MembershipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
