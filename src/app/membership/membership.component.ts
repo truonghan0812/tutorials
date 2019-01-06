@@ -1,36 +1,31 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from "@angular/core";
 
 @Component({
-  selector: 'app-membership',
-  templateUrl: './membership.component.html',
-  styleUrls: ['./membership.component.scss']
+  selector: "app-membership",
+  templateUrl: "./membership.component.html",
+  changeDetection: ChangeDetectionStrategy.Default,
+  styleUrls: ["./membership.component.scss"]
 })
-export class MembershipComponent{
+export class MembershipComponent {
   @Input() members = [];
-  itemPerPage = 10;
-
   constructor() {}
-  changeSortOrder(itemPerPage:number){
-    this.itemPerPage = itemPerPage;
-  }
-  getMemberShipLevel(point: number): String{
-    console.info("---getMemberShipLevel---");
-    this.heavyCalculation(1);
-    if(point > 900){
-      return 'Platinum';
-    }else if(point > 700){
-      return 'Gold';
-
-    }else if(point > 500){
-      return 'Silver';
+  getMemberShipLevel(point: number): String {
+    console.info("---Change detection runs---");
+    this.heavyCalculation(10);
+    if (point > 900) {
+      return "Platinum";
+    } else if (point > 700) {
+      return "Gold";
+    } else if (point > 500) {
+      return "Silver";
     }
-    return 'Basic';
+    return "Basic";
   }
-  heavyCalculation(ms){
+  heavyCalculation(ms: number) {
     let start = new Date().getTime();
     let end = start;
-    while(end < start + ms) {
+    while (end < start + ms) {
       end = new Date().getTime();
-   }
+    }
   }
 }

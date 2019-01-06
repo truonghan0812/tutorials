@@ -1,15 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+  members = [];
   title = 'tutorials';
-  sample_memmbers = [];
-  constructor(){
-    this.sample_memmbers = sample_memmbers;
+
+  ngOnInit(): void {
+    this.getAllMembers();
+  }
+  getAllMembers(){
+    this.members = Object.assign(sample_memmbers);
+  }
+  changeNumberOfItem(itemPerPage: number) {
+    this.getAllMembers();
+    this.members.splice(0,itemPerPage);
   }
 }
 const sample_memmbers = [
