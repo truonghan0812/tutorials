@@ -1,25 +1,25 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
-
+import { List, Map } from 'immutable';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  members = [];
-  title = 'tutorials';
-
+  members :List<any>;
+  title: String = 'tutorials';
+  itemPerPage: number = 5;
+  membersInCurrentPage: List<any>;
   ngOnInit(): void {
-    this.getAllMembers();
-  }
-  getAllMembers(){
-    this.members = Object.assign(sample_memmbers);
+    this.members = List(sample_memmbers);
+    this.changeNumberOfItem(this.itemPerPage);
   }
   changeNumberOfItem(itemPerPage: number) {
-    this.getAllMembers();
-    this.members.splice(0,itemPerPage);
+    this.itemPerPage = itemPerPage;
+    this.membersInCurrentPage = this.members.setSize(itemPerPage);
   }
 }
+
 const sample_memmbers = [
   {
     firstName: 'Jame',

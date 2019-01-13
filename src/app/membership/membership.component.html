@@ -1,4 +1,4 @@
-<section class="pt-5 pb-5">
+<section class="pb-5">
   <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -15,7 +15,7 @@
         <td>{{ member.firstName }}</td>
         <td>{{ member.lastName }}</td>
         <td>{{ member.point }}</td>
-        <td>{{ getMemberShipLevel(member.point) }}</td>
+        <td>{{ member.point | calcMemberShipLevel }}</td>
       </tr>
     </tbody>
   </table>

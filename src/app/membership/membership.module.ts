@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MembershipComponent } from './membership.component';
+import { CalcMemberShipLevelPipe } from './calc-member-ship-level.pipe';
 
 @NgModule({
   declarations: [
-    MembershipComponent
+    MembershipComponent,
+    CalcMemberShipLevelPipe
   ],
   imports: [
     CommonModule

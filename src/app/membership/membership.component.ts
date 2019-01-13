@@ -3,14 +3,14 @@ import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy
 @Component({
   selector: "app-membership",
   templateUrl: "./membership.component.html",
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ["./membership.component.scss"]
 })
 export class MembershipComponent {
   @Input() members = [];
   constructor() {}
-  getMemberShipLevel(point: number): String {
-    console.info("---Change detection runs---");
+  calcMemberShipLevel(point: number): String {
+    console.info("---calcMemberShipLevel runs---");
     this.heavyCalculation(10);
     if (point > 900) {
       return "Platinum";

@@ -1,5 +1,6 @@
 <div class="container">
-  <div ngbDropdown class="d-inline-block mb-3">
+  <h1>Performance Check</h1>
+  <div ngbDropdown class="d-inline-block p-3">
     <button
       class="btn btn-outline-primary"
       id="dropdownBasic1"
@@ -14,5 +15,5 @@
       <button class="dropdown-item" (click)="changeNumberOfItem(50)">50</button>
     </div>
   </div>
-  <app-membership [members]="members"></app-membership>
+  <app-membership [members]="membersInCurrentPage"></app-membership>
 </div>
