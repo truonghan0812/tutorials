@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { List, Map } from 'immutable';
+import { List } from 'immutable';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
