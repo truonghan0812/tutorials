@@ -10,7 +10,8 @@ export class CalcMemberShipLevelPipe implements PipeTransform {
     return this.getMemberShipLevel(value);
   }
   getMemberShipLevel(point: number): String{
-    console.info("---getMemberShipLevel---");
+    console.info("---calcMemberShipLevel runs---");
+    this.heavyCalculation(10);
     if(point > 900){
       return 'Platinum';
     }else if(point > 700){
@@ -20,5 +21,13 @@ export class CalcMemberShipLevelPipe implements PipeTransform {
       return 'Silver';
     }
     return 'Basic';
+  }
+  heavyCalculation(ms: number) {
+    console.info("---heavyCalculation runs---");
+    let start = new Date().getTime();
+    let end = start;
+    while (end < start + ms) {
+      end = new Date().getTime();
+    }
   }
 }
