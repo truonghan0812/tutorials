@@ -18,14 +18,14 @@ import { AppService } from './app-service.service';
     AppComponent,
     CustomPipeComponent,
     GetMemberShipLevelPipe,
-    SortByPipe
+    SortByPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     //Third party
     NgbModule,
-    AngularFontAwesomeModule 
+    AngularFontAwesomeModule,
   ],
   providers: [AppService],
   bootstrap: [AppComponent]
