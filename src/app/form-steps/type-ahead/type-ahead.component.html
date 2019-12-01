@@ -1,0 +1,7 @@
+<input 
+  id="typeahead-basic" 
+  type="text" 
+  class="form-control" 
+  [(ngModel)]="model" 
+  [ngbTypeahead]="search"
+  (selectItem)="itemSelected($event)"/>

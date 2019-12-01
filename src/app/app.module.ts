@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 //Third party
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 //Custom items
 import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
@@ -18,14 +17,13 @@ import { AppService } from './app-service.service';
     AppComponent,
     CustomPipeComponent,
     GetMemberShipLevelPipe,
-    SortByPipe,
+    SortByPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     //Third party
-    NgbModule,
-    AngularFontAwesomeModule,
+    AngularFontAwesomeModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

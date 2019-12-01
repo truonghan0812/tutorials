@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ControlContainer } from '@angular/forms';
+import { ControlContainer, FormGroup, FormControl } from '@angular/forms';
+import { Observable } from 'rxjs/internal/Observable';
+import { Iqueen, SeasonService } from '../season.service';
 
 @Component({
   selector: 'app-form-step3',
@@ -9,13 +11,13 @@ import { ControlContainer } from '@angular/forms';
 export class FormStep3Component implements OnInit {
 
   public parentForm;
-  // public queens$: Observable<Iqueen[]>;
+  public queens$: Observable<Iqueen[]>;
   // public lipsyncs$: Observable<any[]>;
   public lipSyncFormArray;
 
   constructor(
     private parentFormControl: ControlContainer,
-    // private seasonService: SeasonService
+    private seasonService: SeasonService
   ) { 
   }
 
@@ -23,7 +25,7 @@ export class FormStep3Component implements OnInit {
     this.parentForm = this.parentFormControl.control;
     this.lipSyncFormArray = this.parentForm.get('favorite_lipsyncs');
     console.log('queens', this.lipSyncFormArray);
-    // this.queens$ = this.seasonService.getQueens();
+    this.queens$ = this.seasonService.getQueens();
 
     // this.lipsyncs$ = this.seasonService.getLipsyncs();
   }

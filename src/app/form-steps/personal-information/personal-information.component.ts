@@ -15,5 +15,4 @@ export class PersonalInformationComponent implements OnInit {
   ngOnInit() {
     this.addressFormGroup = this.controlContainer.control.get('address');
   }
-
 }

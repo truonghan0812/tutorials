@@ -9,7 +9,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrettyPrintPipe } from './pretty-print.pipe';
 import { PersonalInformationComponent } from './personal-information/personal-information.component';
 import { AddressComponent } from './address/address.component';
-
+import { SeasonEspisodeComponent } from './season-espisode/season-espisode.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SeasonService } from './season.service';
+import { TypeAheadComponent } from './type-ahead/type-ahead.component';
+import {NgbTypeaheadModule} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     FormStepsComponent,
@@ -18,13 +22,18 @@ import { AddressComponent } from './address/address.component';
     FormStep3Component,
     PrettyPrintPipe,
     PersonalInformationComponent,
-    AddressComponent
+    AddressComponent,
+    SeasonEspisodeComponent,
+    TypeAheadComponent
   ],
   imports: [
     CommonModule,
     FormStepsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-  ]
+    HttpClientModule,
+    NgbTypeaheadModule
+  ],
+  providers:[SeasonService]
 })
 export class FormStepsModule { }
