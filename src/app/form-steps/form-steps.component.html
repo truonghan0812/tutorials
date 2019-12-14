@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-6">
+    <h3>Parent Component with Child Forms</h3>
+    <form [formGroup]="mainForm" (ngSubmit)="save()">
+      <button [routerLink]="['step-1']">Step 1</button>
+      <button [routerLink]="['step-2']">Step 2</button>
+      <button [routerLink]="['step-3']">Step 3</button>
+      <router-outlet></router-outlet>
+      <button type="submit">SAVE FORM</button>
+    </form>
+  </div>
+  <div class="col-6">
+    <div >
+      <h4>Current Form Value</h4>
+      <pre [innerHTML]="mainForm.value | prettyprint"></pre>
+      <h4>Form Validity: {{ mainForm.valid }}</h4>
+    </div>
+  </div>
+</div>

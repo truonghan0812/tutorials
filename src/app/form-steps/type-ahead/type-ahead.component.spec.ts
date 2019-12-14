@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CustomPipeComponent } from './custom-pipe.component';
+import { TypeAheadComponent } from './type-ahead.component';
 
-describe('CustomPipeComponent', () => {
-  let component: CustomPipeComponent;
-  let fixture: ComponentFixture<CustomPipeComponent>;
+describe('TypeAheadComponent', () => {
+  let component: TypeAheadComponent;
+  let fixture: ComponentFixture<TypeAheadComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CustomPipeComponent ]
+      declarations: [ TypeAheadComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CustomPipeComponent);
+    fixture = TestBed.createComponent(TypeAheadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

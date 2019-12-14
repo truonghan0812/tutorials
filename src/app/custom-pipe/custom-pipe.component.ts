@@ -1,21 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+
+import { Observable, of, Subscription, } from 'rxjs';
+import { delay } from 'rxjs/operators';
+import { Component, OnDestroy } from '@angular/core';
+import { AppService } from '../app-service.service';
 
 @Component({
   selector: 'app-custom-pipe',
   templateUrl: './custom-pipe.component.html',
   styleUrls: ['./custom-pipe.component.scss']
 })
-export class CustomPipeComponent{
+export class CustomPipeComponent implements OnDestroy{
   members = [];
   itemPerPage = 10;
+  delayedObservable$: Observable<any>;
 
-  constructor() {
-    this.members = sample_memmbers.slice(0, this.itemPerPage);
+  memberlistSubscription: Subscription;
+  memberlist: []
+
+  constructor(public appService: AppService) {
+    this.memberlistSubscription = appService.getCustomerList(this.itemPerPage).subscribe(list =>{
+      this.memberlist = list;
+    });
   }
   changeSortOrder(itemPerPage:number){
     this.itemPerPage = itemPerPage;
-    this.members = sample_memmbers.slice(0, this.itemPerPage);
+    this.memberlistSubscription = this.appService.getCustomerList(this.itemPerPage).subscribe(list =>{
+      this.memberlist = list;
+    });
   }
+  // constructor(public appService: AppService) {
+  //   this.delayedObservable$ = appService.getCustomerList(this.itemPerPage);
+  // }
+  // changeSortOrder(itemPerPage:number){
+  //   this.itemPerPage = itemPerPage;
+  //   this.delayedObservable$ = this.appService.getCustomerList(this.itemPerPage);
+  // }
   getMemberShipLevel(point: number): String{
     console.info("---getMemberShipLevel---");
     
@@ -29,177 +48,8 @@ export class CustomPipeComponent{
     }
     return 'Basic';
   }
-}
 
-const sample_memmbers = [
-  {
-    firstName: 'Jame',
-    lastName: 'Butt',
-    point: 500
-  },
-  {
-    firstName: 'Jame',
-    lastName: 'Butt',
-    point: 500
-  },
-  {
-    firstName: 'Jame',
-    lastName: 'Butt',
-    point: 500
-  },
-  {
-    firstName: 'Josephine',
-    lastName: 'Darakjy',
-    point: 200
-  },
-  {
-    firstName: 'Josephine',
-    lastName: 'Venere',
-    point: 700
-  },
-  {
-    firstName: 'Josephine',
-    lastName: 'Venere',
-    point: 700
-  },
-  {
-    firstName: 'Josephine',
-    lastName: 'Venere',
-    point: 700
-  },
-  {
-    firstName: 'Lenna',
-    lastName: 'Paprocki',
-    point: 800
-  },
-  {
-    firstName: 'Cammy',
-    lastName: 'Albares',
-    point: 900
-  },
-  {
-    firstName: 'Ammie',
-    lastName: 'Perin',
-    point: 1000
-  },
-  {
-    firstName: 'Josephine',
-    lastName: 'Darakjy',
-    point: 200
-  },
-  {
-    firstName: 'Josephine',
-    lastName: 'Venere',
-    point: 700
-  },
-  {
-    firstName: 'Josephine',
-    lastName: 'Venere',
-    point: 700
-  },
-  {
-    firstName: 'Josephine',
-    lastName: 'Venere',
-    point: 700
-  },
-  {
-    firstName: 'Lenna',
-    lastName: 'Paprocki',
-    point: 800
-  },
-  {
-    firstName: 'Cammy',
-    lastName: 'Albares',
-    point: 900
-  },
-  {
-    firstName: 'Ammie',
-    lastName: 'Perin',
-    point: 1000
-  },
-  {
-    firstName: 'Jame',
-    lastName: 'Butt',
-    point: 500
-  },
-  {
-    firstName: 'Jame',
-    lastName: 'Butt',
-    point: 500
-  },
-  {
-    firstName: 'Jame',
-    lastName: 'Butt',
-    point: 500
-  },
-  {
-    firstName: 'Josephine',
-    lastName: 'Darakjy',
-    point: 200
-  },
-  {
-    firstName: 'Josephine',
-    lastName: 'Venere',
-    point: 700
-  },
-  {
-    firstName: 'Josephine',
-    lastName: 'Venere',
-    point: 700
-  },
-  {
-    firstName: 'Josephine',
-    lastName: 'Venere',
-    point: 700
-  },
-  {
-    firstName: 'Lenna',
-    lastName: 'Paprocki',
-    point: 800
-  },
-  {
-    firstName: 'Cammy',
-    lastName: 'Albares',
-    point: 900
-  },
-  {
-    firstName: 'Ammie',
-    lastName: 'Perin',
-    point: 1000
-  },
-  {
-    firstName: 'Josephine',
-    lastName: 'Darakjy',
-    point: 200
-  },
-  {
-    firstName: 'Josephine',
-    lastName: 'Venere',
-    point: 700
-  },
-  {
-    firstName: 'Josephine',
-    lastName: 'Venere',
-    point: 700
-  },
-  {
-    firstName: 'Josephine',
-    lastName: 'Venere',
-    point: 700
-  },
-  {
-    firstName: 'Lenna',
-    lastName: 'Paprocki',
-    point: 800
-  },
-  {
-    firstName: 'Cammy',
-    lastName: 'Albares',
-    point: 900
-  },
-  {
-    firstName: 'Ammie',
-    lastName: 'Perin',
-    point: 1000
+  ngOnDestroy(): void {
+    this.memberlistSubscription.unsubscribe();
   }
-];
+}
