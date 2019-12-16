@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 //Third party
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import {NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
 //Custom items
 import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
 import { GetMemberShipLevelPipe } from './custom-pipe/get-member-ship-level.pipe';
@@ -23,7 +24,8 @@ import { AppService } from './app-service.service';
     BrowserModule,
     AppRoutingModule,
     //Third party
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    NgbDropdownModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]
