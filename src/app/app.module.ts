@@ -12,6 +12,9 @@ import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
 import { GetMemberShipLevelPipe } from './custom-pipe/get-member-ship-level.pipe';
 import { SortByPipe } from './custom-pipe/sort-by.pipe';
 import { AppService } from './app-service.service';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducer } from 'src/app/manage-state/manage-state/store';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,10 @@ import { AppService } from './app-service.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    StoreModule.forRoot({fruitStore:reducer}),
+    StoreDevtoolsModule.instrument({     // Required for ReduxDevTools
+      maxAge: 25                         // Track history for 25 actions
+    }),
     //Third party
     AngularFontAwesomeModule,
     NgbDropdownModule

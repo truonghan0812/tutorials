@@ -1,5 +1,6 @@
 export interface State {
-    amount: number;
+    items: [];
 }
  
 export const initialState: State = {} as State;
+
