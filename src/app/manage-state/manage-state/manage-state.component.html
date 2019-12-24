@@ -3,9 +3,9 @@
     <div class="col" style="background-color: bisque;">
       <div class="row">
         <div class="btn-group btn-group-lg">
-          <button type="button" class="btn btn-primary bg-primary" (click)="addItem($event)">➕</button>
-          <button type="button" class="btn btn-primary bg-danger" (click)="removeItem($event)">➖</button>
-          <button type="button" class="btn btn-primary bg-success"(click)="refresh($event)">🔃</button>
+          <button type="button" class="btn btn-primary bg-primary" (click)="addItem()">➕</button>
+          <button type="button" class="btn btn-primary bg-danger" (click)="removeItem()">➖</button>
+          <button type="button" class="btn btn-primary bg-success"(click)="refresh()">🔃</button>
         </div>
       </div>
       <div class="row p-1">
@@ -29,7 +29,7 @@
     </div>
     <div class="col d-flex flex-wrap" style="background-color: #74992e;font-size: xx-large;">
       <div *ngFor="let item of items$ | async">
-        {{item}}
+        {{item.type}}
       </div>
     </div>
   </div>

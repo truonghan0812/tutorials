@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Store} from '@ngrx/store';
-import { InitStoreItems, State, AddNewApple, RemoveAnApple} from './store';
+import { InitStoreItems, FruitState, AddNewApple, RemoveAnApple} from './store';
 
 @Component({
   selector: 'app-manage-state',
@@ -11,21 +11,20 @@ import { InitStoreItems, State, AddNewApple, RemoveAnApple} from './store';
 export class ManageStateComponent implements OnInit {
 
   public items$:Observable<any>;
-  constructor(private store: Store<State>) {}
+  constructor(private store: Store<FruitState>) {}
 
   ngOnInit() {
     this.store.dispatch(new InitStoreItems(null));
     const selectorFuction = (s) => s.fruitStore.items;
     this.items$ = this.store.select(selectorFuction);
   }
-  addItem($event){
-    this.store.dispatch(new AddNewApple('🍎'));
+  addItem(){
+    this.store.dispatch(new AddNewApple({type:'🍎'}));
   }
-  removeItem($event){
-    this.store.dispatch(new RemoveAnApple());
+  removeItem(){
+    this.store.dispatch(new RemoveAnApple(null));
   }
-  // refresh($event){
-  //   this.initItems = ['🍎','🍎','🍎','🍎','🍎'];
-  //   this.items$ = of((this.initItems));
-  // }
+  refresh(){
+    this.store.dispatch(new InitStoreItems(null));
+  }
 }

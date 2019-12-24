@@ -1,6 +1,8 @@
-export interface State {
-    items: [];
+export interface Fruit {
+    type: String;
 }
- 
-export const initialState: State = {} as State;
+export interface FruitState{
+    items: []
+}
+export const initialFruitState: FruitState = {} as FruitState;
 

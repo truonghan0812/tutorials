@@ -1,28 +1,23 @@
-import * as appActions from "./actions";
-import { ADD_NEW_APPLE, INIT_STORE_ITEMS, REMOVE_AN_APPLE } from "./actions";
-import { ActionReducerMap } from "@ngrx/store";
-import { State, initialState } from "./states";
+import * as fruitActions from "./actions";
+import * as states from "./states";
 
-export function reducer(state:State = initialState , action: appActions.FruitAction): State {
+export function reducer(state:states.FruitState = states.initialFruitState, action: fruitActions.FruitAction): any {
   switch (action.type) {
-    case INIT_STORE_ITEMS: {
+    case fruitActions.INIT_STORE_ITEMS: {
       // Handle get new banana action
-      console.log("REDUCER " + INIT_STORE_ITEMS);
-      return {
-        items: ["🍎", "🍎", "🍎", "🍎", "🍎"]
-      };
+      console.log("REDUCER " + fruitActions.INIT_STORE_ITEMS);
+      return {...state, items: [{type:'🍎'}]}
     }
-    case ADD_NEW_APPLE: {
+    case fruitActions.ADD_NEW_APPLE: {
       // Handle get new banana action
-      console.log("REDUCER " + ADD_NEW_APPLE);
+      console.log("REDUCER " + fruitActions.ADD_NEW_APPLE);
       return {
         items:[...state.items, action.payload]
       };
     }
-    case REMOVE_AN_APPLE: {
+    case fruitActions.REMOVE_AN_APPLE: {
       // Handle get new banana action
-      console.log("REDUCER " + REMOVE_AN_APPLE);
-      console.log(...state.items);
+      console.log("REDUCER " + fruitActions.REMOVE_AN_APPLE);
       return {
         items: [...state.items].slice(0, [...state.items].length -1)
       };
