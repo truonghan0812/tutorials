@@ -1,22 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { Store} from '@ngrx/store';
+import { Component, OnInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Observable, of, BehaviorSubject } from 'rxjs';
+import { Store, select} from '@ngrx/store';
 import { InitStoreItems, FruitState, AddNewApple, RemoveAnApple} from './store';
+import { finalize, tap } from 'rxjs/operators';
+import { LoadingService } from 'src/app/loading.service';
 
 @Component({
   selector: 'app-manage-state',
   templateUrl: './manage-state.component.html',
-  styleUrls: ['./manage-state.component.scss']
+  styleUrls: ['./manage-state.component.scss'],
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ManageStateComponent implements OnInit {
 
-  public items$:Observable<any>;
-  constructor(private store: Store<FruitState>) {}
+  items$:Observable<any>;
+  
+  constructor(private store: Store<FruitState>){}
 
   ngOnInit() {
     this.store.dispatch(new InitStoreItems(null));
     const selectorFuction = (s) => s.fruitStore.items;
-    this.items$ = this.store.select(selectorFuction);
+    this.items$ = this.store.pipe(
+      select(selectorFuction)
+    );
   }
   addItem(){
     this.store.dispatch(new AddNewApple({type:'🍎'}));

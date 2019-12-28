@@ -3,10 +3,10 @@ import * as states from "./states";
 
 export function reducer(state:states.FruitState = states.initialFruitState, action: fruitActions.FruitAction): any {
   switch (action.type) {
-    case fruitActions.INIT_STORE_ITEMS: {
+    case fruitActions.ADD_STORE_ITEMS: {
       // Handle get new banana action
       console.log("REDUCER " + fruitActions.INIT_STORE_ITEMS);
-      return {...state, items: [{type:'🍎'}]}
+      return {...state, ...action.payload}
     }
     case fruitActions.ADD_NEW_APPLE: {
       // Handle get new banana action

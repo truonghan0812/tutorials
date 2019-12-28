@@ -14,7 +14,9 @@ import { SortByPipe } from './custom-pipe/sort-by.pipe';
 import { AppService } from './app-service.service';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { reducer } from 'src/app/manage-state/manage-state/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { LoadingService } from './loading.service';
 
 @NgModule({
   declarations: [
@@ -26,15 +28,17 @@ import { reducer } from 'src/app/manage-state/manage-state/store';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({fruitStore:reducer}),
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({     // Required for ReduxDevTools
       maxAge: 25                         // Track history for 25 actions
     }),
     //Third party
     AngularFontAwesomeModule,
-    NgbDropdownModule
+    NgbDropdownModule,
+    StoreRouterConnectingModule.forRoot()
   ],
-  providers: [AppService],
+  providers: [AppService, LoadingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
