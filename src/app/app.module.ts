@@ -15,8 +15,9 @@ import { AppService } from './app-service.service';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 import { LoadingService } from './loading.service';
+import { customSerializer } from './manage-state/manage-state/store';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,10 @@ import { LoadingService } from './loading.service';
     NgbDropdownModule,
     StoreRouterConnectingModule.forRoot()
   ],
-  providers: [AppService, LoadingService],
+  providers: [AppService, 
+    LoadingService, 
+    {provide: RouterStateSerializer, useClass: customSerializer}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

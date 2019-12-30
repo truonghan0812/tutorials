@@ -1,0 +1,7 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-body" *ngIf="$fruit | async as fruit">
+    <h5 class="card-title">Fruit Type: {{ fruit.type }}</h5>
+    <p class="card-text">Fruit Id: {{fruit.id}}</p>
+    <a [routerLink]="['../']" class="btn btn-primary">Back</a>
+  </div>
+</div>
